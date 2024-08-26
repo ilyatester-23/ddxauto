@@ -1,5 +1,6 @@
 import { expect, request, test } from "@playwright/test";
 import api from '../api.json';
+import { getBaseParameters } from "../entities/baseParameters";
 
 test.describe("API-тесты на получение списка клубов", async () => {
     test("[positive] получить список клубов", async ({ request }) => {
@@ -9,11 +10,7 @@ test.describe("API-тесты на получение списка клубов"
                 headers: {
                     'Authorization': `${api.tokens.test}`
                 },
-                params: {
-                    session_id: "1",
-                    request_id: "2",
-                    "request_source": "crm"
-                }
+                params: {...await getBaseParameters()}
             }
         );
 
