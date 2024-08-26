@@ -2,5 +2,5 @@ export function getRandomPhoneNumber(): string {
     return `+7985${new Date().getTime().toString().substring(6)}`
 };
 export function getRandomEmail(): string {
-    return `work${new Date().getTime().toString().substring(6)}@mail.ru`
+    return `work${new Date().getTime().toString().substring(3)}@mail.ru`
 }
