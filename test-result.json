@@ -1,0 +1,724 @@
+{
+  "config": {
+    "configFile": "D:\\Downloads\\WORK\\ddxauto\\playwright.config.ts",
+    "rootDir": "D:/Downloads/WORK/ddxauto/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 6
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-result.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "playwright-report/"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/Downloads/WORK/ddxauto/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/Downloads/WORK/ddxauto/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.45.1",
+    "workers": 6,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "first.test.ts",
+      "file": "first.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Описание группы теста",
+          "file": "first.test.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Я пишу тест",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 11,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Уиии! Я написал тест!\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:11.059Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6b447037608db51f3257-a55dc477965489b83e4d",
+              "file": "first.test.ts",
+              "line": 4,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "getClubs.test.ts",
+      "file": "getClubs.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "API-тесты на получение списка клубов",
+          "file": "getClubs.test.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[positive] получить список клубов",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "status": "passed",
+                      "duration": 478,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:11.059Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "92e29c0ffaf52955a8aa-1d4313dbc92917cedd50",
+              "file": "getClubs.test.ts",
+              "line": 6,
+              "column": 9
+            },
+            {
+              "title": "[negative] получить список клубов",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "status": "passed",
+                      "duration": 122,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:11.554Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "92e29c0ffaf52955a8aa-6b6b7ccbd271f0b479ca",
+              "file": "getClubs.test.ts",
+              "line": 20,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "getEmployees.test.ts",
+      "file": "getEmployees.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Тесты на получение информации о сотрудниках",
+          "file": "getEmployees.test.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[positive] получить информацию о сотруднике(Выбрал именно одного сотрудника, так как на всех сотрудников - запрос падает в Postman)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "status": "passed",
+                      "duration": 237,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:11.042Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2e1e8b4a223558ab9fb6-857d1ff14333bf75fdfb",
+              "file": "getEmployees.test.ts",
+              "line": 6,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "getPaymentPlans.test.ts",
+      "file": "getPaymentPlans.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "API-тесты на получение списка подписок",
+          "file": "getPaymentPlans.test.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[positive] получить список активных подписок",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "status": "passed",
+                      "duration": 243,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:11.057Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "73e529cb5b44bcdb7679-f3994bd0c61204d1ddb5",
+              "file": "getPaymentPlans.test.ts",
+              "line": 6,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "postCreateUsers.test.ts",
+      "file": "postCreateUsers.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Тесты на создание клиентов",
+          "file": "postCreateUsers.test.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[positive] Создать клиента без опыта",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 1261,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:11.071Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-e22b10a8d77b18d2acc5",
+              "file": "postCreateUsers.test.ts",
+              "line": 13,
+              "column": 9
+            },
+            {
+              "title": "[positive] Создать клиента с опытом 0-6 месяцев",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 951,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:12.349Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-0f84e4988078396ffc22",
+              "file": "postCreateUsers.test.ts",
+              "line": 48,
+              "column": 9
+            },
+            {
+              "title": "[positive] Создать клиента без пароля и с опытом 6-12 месяцев",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 888,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:13.304Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-a7adce5149b6bbef1c61",
+              "file": "postCreateUsers.test.ts",
+              "line": 83,
+              "column": 9
+            },
+            {
+              "title": "[positive] Создать клиента с опытом 1-2 года",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 925,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:14.195Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-6f29b745adc2f7f7be62",
+              "file": "postCreateUsers.test.ts",
+              "line": 118,
+              "column": 9
+            },
+            {
+              "title": "[positive] Создать клиента с опытом 2-3 года",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 1018,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:15.122Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-bc71fc3c4442a63f695d",
+              "file": "postCreateUsers.test.ts",
+              "line": 153,
+              "column": 9
+            },
+            {
+              "title": "[positive] Создать клиента с опытом 3-5 лет",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 859,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:16.143Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-9dd0205a64b90b2763c7",
+              "file": "postCreateUsers.test.ts",
+              "line": 188,
+              "column": 9
+            },
+            {
+              "title": "[positive] Создать клиента с опытом больше 5 лет",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 845,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:17.004Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-7f4c905c6feed2ec5d25",
+              "file": "postCreateUsers.test.ts",
+              "line": 223,
+              "column": 9
+            },
+            {
+              "title": "[positive] Создать клиента, у которого опыт не указан",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 998,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:17.852Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-2cda6514e568bc7586a8",
+              "file": "postCreateUsers.test.ts",
+              "line": 258,
+              "column": 9
+            },
+            {
+              "title": "[positive] Создать клиента, без пароля с опытом 0-6 месяцев",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 1009,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:18.853Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-cae8e4933c10fb45cc62",
+              "file": "postCreateUsers.test.ts",
+              "line": 294,
+              "column": 13
+            },
+            {
+              "title": "[positive] Создать клиента, без пароля с опытом 6-12 месяцев",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 875,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:19.864Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-597ad178bfbf2466d263",
+              "file": "postCreateUsers.test.ts",
+              "line": 294,
+              "column": 13
+            },
+            {
+              "title": "[positive] Создать клиента, без пароля с опытом 1-2 года",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 906,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:20.743Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "43de203fc23683c29dfd-2ffcac15b01216a3b39b",
+              "file": "postCreateUsers.test.ts",
+              "line": 294,
+              "column": 13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "postNotes.test.ts",
+      "file": "postNotes.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Тесты на создание заметок",
+          "file": "postNotes.test.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[positive] Создать заметку",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "status": "passed",
+                      "duration": 259,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-09-08T10:25:11.122Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "949009d833bb07182618-925bfe933ca8d99ac48f",
+              "file": "postNotes.test.ts",
+              "line": 5,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2024-09-08T10:25:10.374Z",
+    "duration": 11283.782,
+    "expected": 17,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
