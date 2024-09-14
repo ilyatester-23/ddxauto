@@ -1,10 +1,10 @@
-import { expect, test } from "@playwright/test";
+import { expect, request, test } from "@playwright/test";
 import api from '../api.json';
 import { getRandomPhoneNumber } from "../utils/random";
 import { log } from "../utils/logger";
 
 test.describe("Тесты на создание карт/браслетов доступа", async () => {
-    test.only("[positive] Создать пользователю карту", async ({ request }) => {
+    test("[positive] Создать пользователю карту", async ({ request }) => {
         const url = `${api.urls.base_url_api}${api.paths.access_cards}`;
         const requestBody = {
                     session_id: "549297f8-e38a-47cd-915e-2a1859102539",
