@@ -11,7 +11,7 @@ export default defineConfig({
     video: "retain-on-failure",
     trace: 'off',
   },
-  reporter: [["line"], ["json", { outputFile: "test-result.json" }],
+  reporter: [["line"], ["json", {outputFile: "test-result.json"}],
   ['html', {
     open: "never",
     outputFolder: "playwright-report/"
@@ -20,7 +20,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    }
-  ]
+      use: {...devices['Desktop Chrome']},
+    },
+  ],
 });
