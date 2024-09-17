@@ -11,7 +11,7 @@ const clubIDs = [
 
 test.describe("API-тесты на получение информации о сотрудниках", async () => {
     clubIDs.forEach(club_id => {
-        test(`[positive] Получить список сотрудников по позиции и клубам ${club_id}`, async ({ request }) => {
+        test.only(`[positive] Получить список сотрудников по позиции и клубам ${club_id}`, async ({ request }) => {
            const url = `${api.urls.base_url_api}${api.paths.positions}`;
            const parameters = { ...await getBaseParameters(), position_name: "Персональный тренер", club_id };
 
