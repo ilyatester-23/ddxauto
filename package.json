@@ -2,7 +2,17 @@
   "name": "ddxauto",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test tests/ -- workers 2",
+    "test-users": "npx playwright test tests/users/ -- workers 1",
+    "test-accessCards": "npx playwright test tests/accessCards/ -- workers 1",
+    "test-clubs": "npx playwright test tests/clubs/ -- workers 1",
+    "test-employee": "npx playwright test tests/employee/ -- workers 1",
+    "test-groupTrainings": "npx playwright test tests/groupTrainings/ -- workers 1",
+    "test-notes": "npx playwright test tests/notes/ -- workers 1",
+    "test-paymentPlans": "npx playwright test tests/paymentPlans/ -- workers 1",
+    "test-userVerification": "npx playwright test tests/userVerification/ -- workers 1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

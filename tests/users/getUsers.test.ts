@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { getRandomEmail, getRandomPhoneNumber } from "../utils/random";
-import createUsersRequests from "../requests/createUsers.request";
-import getClubs from "../requests/clubs.request";
-import { getBaseParameters } from "../entities/baseParameters";
+import createUsersRequests from "../../requests/createUsers.request";
+import { getRandomEmail, getRandomPhoneNumber } from "../../utils/random";
+import getClubs from "../../requests/clubs.request";
+import { getBaseParameters } from "../../entities/baseParameters";
 
 const createRequestBody = (clubID) => ({
     session_id: "23",
@@ -27,11 +27,11 @@ const createRequestBody = (clubID) => ({
     }
 });
 
-test.describe("API-тесты на создание клиента с club_id", async () => {
-    test("[positive] Получить список клубов и создать клиента", async ({ request }) => {
-        let clubID;
+test.describe("API-тесты на получение информации о клиенте", async () => {
+    test("[positive] Получить информацию о клиенте", async ({ request }) => {
+        let clubID; Number;
 
-        await test.step("[positive] Получить список клубов", async () => {
+        await test.step("[positive] Получить информацию о клиенте", async () => {
             const clubsID = await new getClubs(request).getClubsID(200, await getBaseParameters());
             const clubsData = await clubsID.json();
             clubID = clubsData.data[0].id;
@@ -40,7 +40,7 @@ test.describe("API-тесты на создание клиента с club_id", 
             expect((await response.json()).data[0].id).toEqual(clubID);
         });
 
-        await test.step("[positive] Создание клиента с полученным club_id", async () => {
+        await test.step("[positive] Создание клиента", async () => {
             const requestBody = createRequestBody(clubID);
             const createdUser = await new createUsersRequests(request).postCreateUsers(200, requestBody);
             const response = await new createUsersRequests(request).getUserById(200, await getBaseParameters(), (await createdUser.json()).data.id);

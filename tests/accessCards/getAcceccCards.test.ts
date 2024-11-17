@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
-import { getRandomPhoneNumber } from "../utils/random";
-import AccessCardRequests from "../requests/accessCards.request";
-import { getBaseParameters } from "../entities/baseParameters";
+import { getRandomPhoneNumber } from "../../utils/random";
+import AccessCardRequests from "../../requests/accessCards.request";
+import { getBaseParameters } from "../../entities/baseParameters";
 
 const requestBody = {
     session_id: "23",
