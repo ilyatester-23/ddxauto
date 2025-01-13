@@ -9,7 +9,7 @@ import { Providers } from "@libs/PaymentProviders";
 import PaymentCreate from "@requests/paymentCreate.request";
 
 test.describe("API-тесты на создание подписки клиенту", async () => {
-    test.only("Получение клуба и создание клиента", async ({ request }) => {
+    test("Получение клуба и создание клиента", async ({ request }) => {
         const clubId = await test.step("Получить id клуба", async () => {
             const parameters = { ...await getBaseParameters() };
             const clubsID = await new getClubs(request).getClubsID(Statuses.OK, parameters);
