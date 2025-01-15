@@ -1,9 +1,8 @@
 import { expect, test } from "@playwright/test"; 
 import { getBaseParameters } from "@entities/baseParameters";
-import createUsersRequests from "@requests/createUsers.request";
+import createUsersRequests from "@requests/users.request";
 import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import getClubs from "@requests/clubs.request";
-import api from '../../api.json';
 import { Statuses } from "@libs/statuses";
 import { Providers } from "@libs/PaymentProviders";
 import PaymentCreate from "@requests/paymentCreate.request";

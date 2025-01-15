@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import createUsersRequests from "../../requests/createUsers.request";
+import createUsersRequests from "../../requests/users.request";
 import { getRandomEmail, getRandomPhoneNumber } from "../../utils/random";
 import getClubs from "../../requests/clubs.request";
 import { getBaseParameters } from "../../entities/baseParameters";
