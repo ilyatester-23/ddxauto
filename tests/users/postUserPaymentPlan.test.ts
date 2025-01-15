@@ -50,10 +50,10 @@ test.describe("API-тесты на создание подписки клиен�
                 session_id: "23",
                 request_id: "23",
                 request_source: "mobile_app",
-                start_date: "2025-01-13",
+                start_date: "2025-01-16",
                 payment_plan_id: 18,
                 club_id: clubId,
-                verification_token: "f5046b45-7c68-408e-afc4-d0125374959e",
+                verification_token: "04e595aa-64e7-4203-afe6-804e864d7db2",
             };
 
             const url = `https://api.test.ddxfitness.ru/users/${userId}/user_payment_plans`;

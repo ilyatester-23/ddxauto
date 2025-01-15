@@ -52,19 +52,13 @@ test.describe("API-тесты на создание подписки клиен�
                 session_id: "23",
                 request_id: "23",
                 request_source: "crm",
-                start_date: "2025-01-14",
+                start_date: "2025-01-16",
                 payment_plan_id: 246,
                 club_id: clubId,
-                verification_token: "f5046b45-7c68-408e-afc4-d0125374959e",
+                verification_token: "04e595aa-64e7-4203-afe6-804e864d7db2",
             };
 
-            const url = `https://api.test.ddxfitness.ru/users/${userId}/user_payment_plans`;
-            const response = await request.post(url, {
-                headers: {
-                    'Authorization': `${api.tokens.test}`
-                },
-                data: requestBody
-            });
+            const response = await new createUsersRequests(request).postCreatePaymentPlan(Statuses.OK, userId, requestBody);
 
             expect(response.status()).toEqual(Statuses.OK);
             const responseData = await response.json();
@@ -82,12 +76,7 @@ test.describe("API-тесты на создание подписки клиен�
                 provider_id: Providers.subscription_registration,
                 user_id: userId,
                 user_payment_plan_id: subscriptionResponse.data?.[0]?.id,
-                // discount_code: "I#LOVE#DDX",
-                // discount_id: 4771,
                 currency: "RUB",
-                // card_token_id: 1783376,
-                // payment_service_id: 4,
-                // employee_id: 6096,
                 fiscal_method: "OrangeData",
                 widget_settings: {
                     success_page: "https://site-dev.ddxfitness.ru/checkout/redirect.php",
@@ -110,12 +99,7 @@ test.describe("API-тесты на создание подписки клиен�
                 provider_id: Providers.subscription_registration,
                 user_id: userId,
                 user_payment_plan_id: null, // вот тут добавил ошибку, поставил null в обязательном параметре
-                // discount_code: "I#LOVE#DDX",
-                // discount_id: 4771,
                 currency: "RUB",
-                // card_token_id: 1783376,
-                // payment_service_id: 4,
-                // employee_id: 6096,
                 fiscal_method: "OrangeData",
                 widget_settings: {
                     success_page: "https://site-dev.ddxfitness.ru/checkout/redirect.php",
