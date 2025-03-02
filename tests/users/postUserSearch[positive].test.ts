@@ -16,7 +16,7 @@ test.describe("API-тесты на создание подписки клиен�
             return clubsData?.data[0]?.id;
         });
 
-        const { userPhone, userName, userBirthday, userEmail, userLastName, userId } = await test.step("Создать клиента и получить его данные", async () => {
+        const { userPhone, userName, userBirthday, userEmail, userLastName, } = await test.step("Создать клиента и получить его данные", async () => {
             const requestBody = {
                 session_id: "23",
                 request_id: "23",
@@ -42,7 +42,6 @@ test.describe("API-тесты на создание подписки клиен�
 
             const response = (await (await new createUsersRequests(request).postCreateUsers(Statuses.OK, requestBody)).json()).data;
             return {
-                userId: response.id,
                 userPhone: response.phone,
                 userName: response.name,
                 userLastName: response.last_name,
