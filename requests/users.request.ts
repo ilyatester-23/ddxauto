@@ -12,6 +12,6 @@ export default class createUsersRequests extends BaseRequests {
     }
 
     async postCreatePaymentPlan(status: number, userId: number, requestData: any): Promise<APIResponse> {
-        return (await this.post(`${this.baseUrl}${paths.paths.users}/${userId}${paths.paths.user_p_p}`, status, requestData));
+        return (await this.post(`${this.baseUrl}${paths.paths.users}/${userId}${paths.paths.user_payment_plan}`, status, requestData));
     }
 }
