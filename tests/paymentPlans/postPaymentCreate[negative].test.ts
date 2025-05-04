@@ -11,7 +11,7 @@ test.describe("API-тесты на создание подписки клиен�
 
     let clubId: number;
     let userId: number;
-    let subscriptionResponse: number;
+    let subscriptionResponse: { data?: { id?: number }[] };
 
     const paymentCreateResponse = async (request: APIRequestContext, status: Statuses, provider_id: Providers | null) => {
         const requestBodyPayment = {
@@ -76,14 +76,16 @@ test.describe("API-тесты на создание подписки клиен�
         });
 
         subscriptionResponse = await test.step("Создать подписку пользователю", async () => {
+            const today = new Date().toISOString().split('T')[0];
+
             const requestBody = {
                 session_id: "23",
                 request_id: "23",
                 request_source: "crm",
-                start_date: "2025-03-03",
+                start_date: today,
                 payment_plan_id: 241,
                 club_id: clubId,
-                verification_token: "29024e98-27a4-4b52-a2c4-ca6ce7e1711e",
+                verification_token: "edb64773-55a1-4833-875f-cee554b83e94",
             };
 
             const response = await new createUsersRequests(request).postCreatePaymentPlan(Statuses.OK, userId, requestBody);

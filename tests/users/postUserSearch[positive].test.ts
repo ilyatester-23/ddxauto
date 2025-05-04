@@ -7,7 +7,7 @@ import api from '../../api.json';
 import { Statuses } from "@libs/statuses";
 import UsersSearch from "@requests/usersSearch.request";
 
-test.describe("API-тесты на создание подписки клиенту", async () => {
+test.describe("API-тесты на поиск клиента", async () => {
     test("[positive] Получение клуба и создание клиента", async ({ request }) => {
         const clubId = await test.step("Получить id клуба", async () => {
             const parameters = { ...await getBaseParameters() };
