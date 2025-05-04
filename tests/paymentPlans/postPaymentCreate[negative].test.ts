@@ -11,18 +11,20 @@ test.describe("API-тесты на создание подписки клиен�
 
     let clubId: number;
     let userId: number;
-    let subscriptionResponse: { data?: { id?: number }[] };
+    let subscriptionResponse: any;
 
     const paymentCreateResponse = async (request: APIRequestContext, status: Statuses, provider_id: Providers | null) => {
+        const user_payment_plan_id = subscriptionResponse?.data?.[0]?.id;
+    
         const requestBodyPayment = {
             session_id: "123",
             request_id: "123",
             request_source: "mobile_app",
             type: "payment",
             gate_id: 1,
-            provider_id: provider_id,
+            provider_id,
             user_id: userId,
-            user_payment_plan_id: subscriptionResponse.data?.[0]?.id,
+            user_payment_plan_id,
             currency: "RUB",
             fiscal_method: "OrangeData",
             widget_settings: {
@@ -30,11 +32,9 @@ test.describe("API-тесты на создание подписки клиен�
                 fault_page: "https://site-test.ddxfitness.ru/checkout/redirect.php?error=faild"
             }
         };
-
-        const paymentCreateResponse = await new PaymentCreate(request).postPaymentCreate(status, requestBodyPayment);
-
-        return paymentCreateResponse;
-    }
+    
+        return await new PaymentCreate(request).postPaymentCreate(status, requestBodyPayment);
+    };
 
 
     test.beforeAll(async ({ request }) => {
