@@ -1,7 +1,10 @@
+import { RequestSource } from "@libs/requestSource";
+import requestTestData from "@data/request.json"
+
 export async function getBaseParameters(): Promise<object> {
     return {
-        session_id: "1",
-        request_id: "2",
-        "request_source": "crm"
+        session_id: requestTestData.sessionId,
+        request_id: requestTestData.requestId,
+        "request_source": RequestSource.CRM
     }
 }

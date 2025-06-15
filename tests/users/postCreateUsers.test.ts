@@ -1,27 +1,31 @@
 import { expect, request, test } from "@playwright/test";
 import { getRandomEmail, getRandomPhoneNumber } from "../../utils/random";
 import createUsersRequests from "../../requests/users.request";
+import userTestData from "@data/users.json";
+import requestTestData from "@data/request.json"
+import { RequestSource } from "@libs/requestSource";
+import { SportExperience } from "@libs/sportExperience";
 
 const requestBody = {
-    session_id: "23",
-    request_id: "23",
-    request_source: "crm",
+    session_id: requestTestData.sessionId,
+    request_id: requestTestData.requestId,
+    request_source: RequestSource.CRM,
     data: {
         email: getRandomEmail(),
-        name: "Aotobot",
-        last_name: "Тестович",
-        middle_name: "Тестов",
-        sex: "male",
-        password: "qwerty1234",
+        name: userTestData.firstName,
+        last_name: userTestData.lastName,
+        middle_name: userTestData.middleName,
+        sex: userTestData.sex.male,
+        password: userTestData.password,
         phone: getRandomPhoneNumber(),
-        birthday: "1990-02-02",
-        lang: "ru",
-        user_photo_id: 4,
+        birthday: userTestData.birthday,
+        lang: userTestData.lang,
+        user_photo_id: userTestData.userPhotoId,
         home_club_id: 1,
         club_access: true,
         admin_panel_access: false,
         class_registration_access: true,
-        sport_experience: "1-2 года"
+        sport_experience: SportExperience.NO_EXPERIENCE
     }
 }
 

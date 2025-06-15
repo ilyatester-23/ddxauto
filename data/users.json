@@ -1,0 +1,13 @@
+{
+    "firstName": "Avtomata",
+    "lastName": "Bot",
+    "middleName": "Сергеевич",
+    "birthday": "1990-11-23",
+    "sex": {
+        "male": "male",
+        "female": "female"
+    },
+    "password": "qwerty123",
+    "userPhotoId": 4,
+    "lang": "ru"
+}

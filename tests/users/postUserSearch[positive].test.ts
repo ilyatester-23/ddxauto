@@ -5,6 +5,10 @@ import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import getClubs from "@requests/clubs.request";
 import { Statuses } from "@libs/statuses";
 import UsersSearch from "@requests/usersSearch.request";
+import { SportExperience } from "@libs/sportExperience";
+import { RequestSource } from "@libs/requestSource";
+import userTestData from "@data/users.json";
+import requestTestData from "@data/request.json"
 
 let clientData: {
     userPhone: string;
@@ -22,25 +26,25 @@ test.describe("API-тесты на поиск клиента", () => {
         const clubId = clubsData?.data[0]?.id;
 
         const createBody = {
-            session_id: "23",
-            request_id: "23",
-            request_source: "crm",
+            session_id: requestTestData.sessionId,
+            request_id: requestTestData.requestId,
+            request_source: RequestSource.CRM,
             data: {
                 email: getRandomEmail(),
-                name: "Aotobot",
-                last_name: "Тестович",
-                middle_name: "Тестов",
-                sex: "male",
-                password: "qwerty1234",
+                name: userTestData.firstName,
+                last_name: userTestData.lastName,
+                middle_name: userTestData.middleName,
+                sex: userTestData.sex.male,
+                password: userTestData.password,
                 phone: getRandomPhoneNumber(),
-                birthday: "1990-02-02",
-                lang: "ru",
-                user_photo_id: 4,
+                birthday: userTestData.birthday,
+                lang: userTestData.lang,
+                user_photo_id: userTestData.userPhotoId,
                 home_club_id: clubId,
                 club_access: true,
                 admin_panel_access: false,
                 class_registration_access: true,
-                sport_experience: "1-2 года"
+                sport_experience: SportExperience.TWO_THREE_YEAR
             }
         };
 
@@ -57,9 +61,9 @@ test.describe("API-тесты на поиск клиента", () => {
 
     test("[positive] Поиск по номеру телефона", async ({ request }) => {
         const requestBody = {
-            session_id: "23",
-            request_id: "23",
-            request_source: "crm",
+            session_id: requestTestData.sessionId,
+            request_id: requestTestData.requestId,
+            request_source: RequestSource.CRM,
             data: {
                 phone: clientData.userPhone
             }
@@ -72,9 +76,9 @@ test.describe("API-тесты на поиск клиента", () => {
 
     test("[positive] Поиск по имени, фамилии и дате рождения", async ({ request }) => {
         const requestBody = {
-            session_id: "23",
-            request_id: "23",
-            request_source: "crm",
+            session_id: requestTestData.sessionId,
+            request_id: requestTestData.requestId,
+            request_source: RequestSource.CRM,
             data: {
                 name: clientData.userName,
                 last_name: clientData.userLastName,
