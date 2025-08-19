@@ -9,6 +9,7 @@ import userTestData from "@data/users.json";
 import requestTestData from "@data/request.json"
 import { RequestSource } from "@libs/requestSource";
 import { SportExperience } from "@libs/sportExperience";
+import { getUserRequestJson } from "@entities/user.requestJson";
 
 let clientData: {
     userPhone: string,
@@ -26,28 +27,7 @@ test.describe("API-тесты на поиск клиента", () => {
         const clubsData = await clubsID.json();
         const clubId = clubsData?.data[0]?.id;
 
-        const requestBody = {
-            session_id: requestTestData.sessionId,
-            request_id: requestTestData.requestId,
-            request_source: RequestSource.CRM,
-            data: {
-                email: getRandomEmail(),
-                name: userTestData.firstName,
-                last_name: userTestData.lastName,
-                middle_name: userTestData.middleName,
-                sex: userTestData.sex.female,
-                password: userTestData.password,
-                phone: getRandomPhoneNumber(),
-                birthday: userTestData.birthday,
-                lang: userTestData.lang,
-                user_photo_id: userTestData.userPhotoId,
-                home_club_id: clubId,
-                club_access: true,
-                admin_panel_access: false,
-                class_registration_access: true,
-                sport_experience: SportExperience.SIX_TWELVE_MONTH
-            }
-        };
+        const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber())
 
         const response = (await (await new createUsersRequests(request).postCreateUsers(Statuses.OK, requestBody)).json()).data;
         clientData = {

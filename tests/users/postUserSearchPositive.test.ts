@@ -9,6 +9,7 @@ import { SportExperience } from "@libs/sportExperience";
 import { RequestSource } from "@libs/requestSource";
 import userTestData from "@data/users.json";
 import requestTestData from "@data/request.json"
+import { getUserRequestJson } from "@entities/user.requestJson";
 
 let clientData: {
     userPhone: string;
@@ -25,30 +26,9 @@ test.describe("API-тесты на поиск клиента", () => {
         const clubsData = await clubsID.json();
         const clubId = clubsData?.data[0]?.id;
 
-        const createBody = {
-            session_id: requestTestData.sessionId,
-            request_id: requestTestData.requestId,
-            request_source: RequestSource.CRM,
-            data: {
-                email: getRandomEmail(),
-                name: userTestData.firstName,
-                last_name: userTestData.lastName,
-                middle_name: userTestData.middleName,
-                sex: userTestData.sex.male,
-                password: userTestData.password,
-                phone: getRandomPhoneNumber(),
-                birthday: userTestData.birthday,
-                lang: userTestData.lang,
-                user_photo_id: userTestData.userPhotoId,
-                home_club_id: clubId,
-                club_access: true,
-                admin_panel_access: false,
-                class_registration_access: true,
-                sport_experience: SportExperience.TWO_THREE_YEAR
-            }
-        };
+        const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber())
 
-        const createdUser = (await (await new createUsersRequests(request).postCreateUsers(Statuses.OK, createBody)).json()).data;
+        const createdUser = (await (await new createUsersRequests(request).postCreateUsers(Statuses.OK, requestBody)).json()).data;
 
         clientData = {
             userPhone: createdUser.phone,

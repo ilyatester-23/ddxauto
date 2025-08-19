@@ -4,6 +4,7 @@ import createUsersRequests from "../../requests/users.request";
 import { getRandomEmail, getRandomPhoneNumber } from "../../utils/random";
 import getClubs from "../../requests/clubs.request";
 import VerifyRequest from "../../requests/verify.request";
+import { getUserRequestJson } from "@entities/user.requestJson";
 
 test.describe("API-тесты на получение отправки кода верификации клиенту", async () => {
     test("[positive] Отправка кода верификации клиенту", async ({ request }) => {
@@ -15,28 +16,7 @@ test.describe("API-тесты на получение отправки кода 
         });
 
         const { userId, userPhone } = await test.step("Получить id клиента", async () => {
-            const requestBody = {
-                session_id: "23",
-                request_id: "23",
-                request_source: "crm",
-                data: {
-                    email: getRandomEmail(),
-                    name: "Aotobot",
-                    last_name: "Тестович",
-                    middle_name: "Тестов",
-                    sex: "male",
-                    password: "qwerty1234",
-                    phone: getRandomPhoneNumber(),
-                    birthday: "1990-02-02",
-                    lang: "ru",
-                    user_photo_id: 4,
-                    home_club_id: clubId,
-                    club_access: true,
-                    admin_panel_access: false,
-                    class_registration_access: true,
-                    sport_experience: "1-2 года"
-                }
-            };
+            const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber())
 
             const response = (await (await new createUsersRequests(request).postCreateUsers(200, requestBody)).json()).data;
             return {

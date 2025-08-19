@@ -9,5 +9,6 @@
     },
     "password": "qwerty123",
     "userPhotoId": 4,
-    "lang": "ru"
+    "lang": "ru",
+    "verification_token": "edb64773-55a1-4833-875f-cee554b83e94"
 }

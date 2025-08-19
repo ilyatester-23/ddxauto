@@ -6,25 +6,24 @@ import getClubs from "@requests/clubs.request";
 import { Statuses } from "@libs/statuses";
 import { Providers } from "@libs/PaymentProviders";
 import PaymentCreate from "@requests/paymentCreate.request";
+import { getUserRequestJson } from "@entities/user.requestJson";
 
 test.describe("API-тесты на создание подписки клиенту", async () => {
 
     let clubId: number;
     let userId: number;
-    let subscriptionResponse: any;
+    let subscriptionResponse: { data?: { id?: number }[] };
 
     const paymentCreateResponse = async (request: APIRequestContext, status: Statuses, provider_id: Providers | null) => {
-        const user_payment_plan_id = subscriptionResponse?.data?.[0]?.id;
-    
         const requestBodyPayment = {
             session_id: "123",
             request_id: "123",
             request_source: "mobile_app",
             type: "payment",
             gate_id: 1,
-            provider_id,
+            provider_id: provider_id,
             user_id: userId,
-            user_payment_plan_id,
+            user_payment_plan_id: subscriptionResponse.data?.[0]?.id,
             currency: "RUB",
             fiscal_method: "OrangeData",
             widget_settings: {
@@ -32,9 +31,11 @@ test.describe("API-тесты на создание подписки клиен�
                 fault_page: "https://site-test.ddxfitness.ru/checkout/redirect.php?error=faild"
             }
         };
-    
-        return await new PaymentCreate(request).postPaymentCreate(status, requestBodyPayment);
-    };
+
+        const paymentCreateResponse = await new PaymentCreate(request).postPaymentCreate(status, requestBodyPayment);
+
+        return paymentCreateResponse;
+    }
 
 
     test.beforeAll(async ({ request }) => {
@@ -48,28 +49,7 @@ test.describe("API-тесты на создание подписки клиен�
 
     test.beforeEach(async ({ request }) => {
         userId = await test.step("Создать клиента и получить его id", async () => {
-            const requestBody = {
-                session_id: "23",
-                request_id: "23",
-                request_source: "crm",
-                data: {
-                    email: getRandomEmail(),
-                    name: "Aotobot",
-                    last_name: "Тестович",
-                    middle_name: "Тестов",
-                    sex: "male",
-                    password: "qwerty1234",
-                    phone: getRandomPhoneNumber(),
-                    birthday: "1990-02-02",
-                    lang: "ru",
-                    user_photo_id: 4,
-                    home_club_id: clubId,
-                    club_access: true,
-                    admin_panel_access: false,
-                    class_registration_access: true,
-                    sport_experience: "1-2 года"
-                }
-            };
+            const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber())
 
             const { id } = (await (await new createUsersRequests(request).postCreateUsers(Statuses.OK, requestBody)).json()).data;
             return id;
@@ -97,29 +77,29 @@ test.describe("API-тесты на создание подписки клиен�
         });
     });
 
-    test("[negative] Создание подписки клиенту 6 провайдером", async ({ request }) => {
+    test("[positive] Создание подписки клиенту 6 провайдером", async ({ request }) => {
         const response = await test.step("Создание оплаты подписки 6 провайдером", 
-            async () => paymentCreateResponse(request, Statuses.BAD_REQUEST, null));
+            async () => paymentCreateResponse(request, Statuses.OK, Providers.subscription_registration));
 
             await test.step("Проверить статус ответа", async () => {
-                expect(response.status()).toEqual(Statuses.BAD_REQUEST)
+                expect(response.status()).toEqual(Statuses.OK)
             });
 
-            await test.step("Проверить сообщение  об ошибке", async () => {
-                expect((await response.json()).error.message).toEqual("not payment provider")
+            await test.step("Проверить статус транзакции в ответе", async () => {
+                expect((await response.json()).transaction.status).toEqual('in progress')
             });
-        });
+        })
 
-    test("[negative] Создание подписки клиенту 2 провайдером", async ({ request }) => {
+    test("[positive] Создание подписки клиенту 2 провайдером", async ({ request }) => {
             const response = await test.step("Создание оплаты подписки 2 провайдером", 
-                async () => paymentCreateResponse(request, Statuses.BAD_REQUEST, null));
+                async () => paymentCreateResponse(request, Statuses.OK, Providers.subscription_payment));
     
                 await test.step("Проверить статус ответа", async () => {
-                    expect(response.status()).toEqual(Statuses.BAD_REQUEST)
+                    expect(response.status()).toEqual(Statuses.OK)
                 });
     
-                await test.step("Проверить сообщение  об ошибке", async () => {
-                    expect((await response.json()).error.message).toEqual("not payment provider")
+                await test.step("Проверить статус транзакции в ответе", async () => {
+                    expect((await response.json()).transaction.status).toEqual('in progress')
                 });
-            });
+            })
 });
