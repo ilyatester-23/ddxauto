@@ -1,6 +1,6 @@
 import { expect, request, test } from "@playwright/test";
-import { getRandomEmail, getRandomPhoneNumber } from "../../utils/random";
-import createUsersRequests from "../../requests/users.request";
+import { getRandomEmail, getRandomPhoneNumber } from "../../../utils/random";
+import createUsersRequests from "../../../requests/users.request";
 import userTestData from "@data/users.json";
 import requestTestData from "@data/request.json"
 import { RequestSource } from "@libs/requestSource";

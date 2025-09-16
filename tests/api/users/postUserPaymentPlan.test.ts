@@ -3,7 +3,7 @@ import { getBaseParameters } from "@entities/baseParameters";
 import createUsersRequests from "@requests/users.request";
 import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import getClubs from "@requests/clubs.request";
-import api from '../../api.json';
+import api from '../../../api.json';
 import { Statuses } from "@libs/statuses";
 import userTestData from "@data/users.json";
 import requestTestData from "@data/request.json"
