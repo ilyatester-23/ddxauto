@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 2
+      "actualWorkers": 1
     },
     "preserveOutput": "always",
     "reporter": [
@@ -64,20 +64,20 @@
   },
   "suites": [
     {
-      "title": "api\\groupTrainings\\getGroupTrainingCategories.test.ts",
-      "file": "api/groupTrainings/getGroupTrainingCategories.test.ts",
+      "title": "ui\\clientsInClub.test.ts",
+      "file": "ui/clientsInClub.test.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "API-тесты на получение списка категорий групповых тренировок",
-          "file": "api/groupTrainings/getGroupTrainingCategories.test.ts",
-          "line": 6,
+          "title": "Тесты на авторизацию в CRM и переход на страницу Клиенты в клубе",
+          "file": "ui/clientsInClub.test.ts",
+          "line": 5,
           "column": 6,
           "specs": [
             {
-              "title": "Получить список категорий удаленных групповых тренировок",
+              "title": "Успешная авторизация в CRM",
               "ok": true,
               "tags": [],
               "tests": [
@@ -89,105 +89,45 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 8,
                       "status": "passed",
-                      "duration": 147,
+                      "duration": 2843,
                       "errors": [],
-                      "stdout": [
-                        {
-                          "text": "\n\t-- REQUEST URL--\n"
-                        },
-                        {
-                          "text": "https://api.test.ddxfitness.ru/group_training_categories\n"
-                        },
-                        {
-                          "text": "\n\t-- PARAMETERS--\n"
-                        },
-                        {
-                          "text": "{\n  session_id: \u001b[32m'autobot-autobot-autobot-autobot'\u001b[39m,\n  request_id: \u001b[32m'autobot-autobot-autobot-autobot'\u001b[39m,\n  request_source: \u001b[32m'crm'\u001b[39m,\n  is_deleted: \u001b[33mtrue\u001b[39m\n}\n"
-                        },
-                        {
-                          "text": "\n\t-- REQUEST STATUS--\n"
-                        },
-                        {
-                          "text": "\u001b[33m200\u001b[39m\n"
-                        },
-                        {
-                          "text": "\n\t-- RESPONSE BODY--\n"
-                        },
-                        {
-                          "text": "{\n\t\"session_id\": \"autobot-autobot-autobot-autobot\",\n\t\"request_id\": \"autobot-autobot-autobot-autobot\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 1,\n\t\t\t\"name\": \"Платные программы\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 2,\n\t\t\t\"name\": \"Бесплатные программы\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 3,\n\t\t\t\"name\": \"ГП антигравити йога\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 4,\n\t\t\t\"name\": \"HARDFOXEZ\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 5,\n\t\t\t\"name\": \"Шпагат\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 6,\n\t\t\t\"name\": \"Студия WheelMe (синхронизация)\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 8,\n\t\t\t\"name\": \"ПОСЕЩЕНИЕ КЛУБА\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 9,\n\t\t\t\"name\": \"ФИТНЕС ТЕСТИРОВАНИЕ\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 10,\n\t\t\t\"name\": \"Вводная Тренировка\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 11,\n\t\t\t\"name\": \"Cycle.MyRide\",\n\t\t\t\"color\": \"#FFDD71\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 12,\n\t\t\t\"name\": \"Студия MyRide (синхронизация)\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 13,\n\t\t\t\"name\": \"Jumping\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 14,\n\t\t\t\"name\": \"bootie pump\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 15,\n\t\t\t\"name\": \"Stretching\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 16,\n\t\t\t\"name\": \"the trip\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 17,\n\t\t\t\"name\": \"Платные уроки$$$\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 18,\n\t\t\t\"name\": \"FitBoxing Женщины\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 19,\n\t\t\t\"name\": \"Стартовая тренировка\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 20,\n\t\t\t\"name\": \"Zumba® $$$\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 21,\n\t\t\t\"name\": \"smart start ягодицы\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 22,\n\t\t\t\"name\": \"Smart Athletics\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 23,\n\t\t\t\"name\": \"Smart Athletics\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 24,\n\t\t\t\"name\": \"Платные уроки$$$ 350\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 25,\n\t\t\t\"name\": \"Платные уроки$$$ 500\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 26,\n\t\t\t\"name\": \"$$$ Cycle КК\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 27,\n\t\t\t\"name\": \"ПроГвозди\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 28,\n\t\t\t\"name\": \"Электрон Мини-группа 800р\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 30,\n\t\t\t\"name\": \"Доступно всем тарифам\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": 31,\n\t\t\t\"name\": \"BICEPS CHAMPIONSHIP\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 32,\n\t\t\t\"name\": \"Retro BodyPump\",\n\t\t\t\"color\": \"#FF6C37\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 33,\n\t\t\t\"name\": \"Les Mills\",\n\t\t\t\"color\": \"#92D9CE\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 37,\n\t\t\t\"name\": \"Специальная\",\n\t\t\t\"color\": \"#FF928E\",\n\t\t\t\"is_deleted\": true,\n\t\t\t\"is_smart_start\": false\n\t\t}\n\t]\n}\n"
-                        }
-                      ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-16T16:08:50.451Z",
+                      "steps": [
+                        {
+                          "title": "Перейти на страницу входа в CRM",
+                          "duration": 719
+                        },
+                        {
+                          "title": "Заполнить форму авторизации и нажать войти",
+                          "duration": 135
+                        },
+                        {
+                          "title": "Проверить, что пользователь находится в CRM и видит поле поиска клиента ",
+                          "duration": 1391
+                        },
+                        {
+                          "title": "Перейти на страницу Клиенты в клубе",
+                          "duration": 123
+                        },
+                        {
+                          "title": "Проверить, что пользователь находится на странице Клиенты в клубе и видит кнопку Фильтры ",
+                          "duration": 10
+                        }
+                      ],
+                      "startTime": "2025-09-16T16:33:29.017Z",
                       "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "5952de4fb84bbcc77701-48835c4745165cc2f5cd",
-              "file": "api/groupTrainings/getGroupTrainingCategories.test.ts",
-              "line": 7,
-              "column": 9
-            },
-            {
-              "title": "Получить список не удаленных категорий групповых тренировок",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "status": "passed",
-                      "duration": 142,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "\n\t-- REQUEST URL--\n"
-                        },
-                        {
-                          "text": "https://api.test.ddxfitness.ru/group_training_categories\n"
-                        },
-                        {
-                          "text": "\n\t-- PARAMETERS--\n"
-                        },
-                        {
-                          "text": "{\n  session_id: \u001b[32m'autobot-autobot-autobot-autobot'\u001b[39m,\n  request_id: \u001b[32m'autobot-autobot-autobot-autobot'\u001b[39m,\n  request_source: \u001b[32m'crm'\u001b[39m\n}\n"
-                        },
-                        {
-                          "text": "\n\t-- REQUEST STATUS--\n"
-                        },
-                        {
-                          "text": "\u001b[33m200\u001b[39m\n"
-                        },
-                        {
-                          "text": "\n\t-- RESPONSE BODY--\n"
-                        },
-                        {
-                          "text": "{\n\t\"session_id\": \"autobot-autobot-autobot-autobot\",\n\t\"request_id\": \"autobot-autobot-autobot-autobot\",\n\t\"data\": [\n\t\t{\n\t\t\t\"id\": 7,\n\t\t\t\"name\": \"Smart Start\",\n\t\t\t\"color\": \"#F6B1DF\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": 29,\n\t\t\t\"name\": \"Семинары\",\n\t\t\t\"color\": \"#F1ED94\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": 34,\n\t\t\t\"name\": \"Mind Body\",\n\t\t\t\"color\": \"#C9AFFF\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 35,\n\t\t\t\"name\": \"Кардио\",\n\t\t\t\"color\": \"#9CB2FF\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 36,\n\t\t\t\"name\": \"Силовая\",\n\t\t\t\"color\": \"#FDAA63\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 38,\n\t\t\t\"name\": \"Танцевальная\",\n\t\t\t\"color\": \"#A0E0F4\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 39,\n\t\t\t\"name\": \"Функциональная\",\n\t\t\t\"color\": \"#C2F0A2\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 40,\n\t\t\t\"name\": \"Мастер-Класс\",\n\t\t\t\"color\": \"#CEE2FF\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": true,\n\t\t\t\"photo\": {\n\t\t\t\t\"id\": 2249365,\n\t\t\t\t\"url\": \"https://photo-storage.storage.yandexcloud.net/f41ea969-0e87-43fd-bfc1-67f115db8a0b\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": 41,\n\t\t\t\"name\": \"DDX Games\",\n\t\t\t\"color\": \"#84E19E\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": true,\n\t\t\t\"photo\": {\n\t\t\t\t\"id\": 2249368,\n\t\t\t\t\"url\": \"https://photo-storage.storage.yandexcloud.net/7016d4c9-73e5-4cb7-ba8e-9e74c07334e6\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": 42,\n\t\t\t\"name\": \"Cycle\",\n\t\t\t\"color\": \"#FFDD71\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 43,\n\t\t\t\"name\": \"Йога\",\n\t\t\t\"color\": \"#F0B3FF\",\n\t\t\t\"is_deleted\": false,\n\t\t\t\"is_smart_start\": false\n\t\t}\n\t]\n}\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-16T16:08:50.451Z",
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "5952de4fb84bbcc77701-82907f069cb1c13324bf",
-              "file": "api/groupTrainings/getGroupTrainingCategories.test.ts",
-              "line": 29,
+              "id": "b718cc3ea7529b17ea08-4603e77b98f302db30fd",
+              "file": "ui/clientsInClub.test.ts",
+              "line": 6,
               "column": 9
             }
           ]
@@ -197,9 +137,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-16T16:08:49.744Z",
-    "duration": 887.783,
-    "expected": 2,
+    "startTime": "2025-09-16T16:33:27.774Z",
+    "duration": 4576.986999999965,
+    "expected": 1,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

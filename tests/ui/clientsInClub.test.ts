@@ -19,11 +19,11 @@ test.describe ("Тесты на авторизацию в CRM и переход 
         });
 
         await test.step("Перейти на страницу Клиенты в клубе", async () => {
-            await page.goto("https://crm.test.ddxfitness.ru/clients-in-club");
+            await page.getByRole('link', { name: 'Клиенты в клубе' }).click();
         });
         
         await test.step("Проверить, что пользователь находится на странице Клиенты в клубе и видит кнопку Фильтры ", async () => {
-            await page.locator("//button[@type='button']").waitFor({ state: 'visible', timeout: 3000 });
+            await page.getByRole('button', { name: 'Фильтры' }).waitFor({ state: 'visible', timeout: 3000 });
         });
         
     });
