@@ -1,22 +1,34 @@
-import { expect, request, test } from "@playwright/test";
-import { getRandomEmail, getRandomPhoneNumber } from "../../../utils/random";
-import createUsersRequests from "../../../requests/users.request";
-import userTestData from "@data/users.json";
-import requestTestData from "@data/request.json"
-import { RequestSource } from "@libs/requestSource";
-import { SportExperience } from "@libs/sportExperience";
-import { BaseRequestJson } from "@entities/base.requestJson";
-import { getUserRequestJson, UserDataRequestJson } from "@entities/user.requestJson";
+import { getBaseParameters } from "@entities/baseParameters";
+import getClubs from "@requests/clubs.request";
+import { Statuses } from "@libs/statuses";
+import { baseResponseJsonSchema } from "@entities/base.response";
+import { createUserDataResponseJsonSchema } from "@entities/user.response";
+import { validateJson } from "@utils/validator.util";
+import { getUserRequestJson } from "@entities/user.requestJson";
+import createUsersRequests from "@requests/users.request";
+import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
+import test, { expect } from "@playwright/test";
 
-let requestData: BaseRequestJson<UserDataRequestJson>;
+let clubId: number;
 
-test.beforeEach(async () => {
-    requestData = await getUserRequestJson(1, getRandomEmail(), getRandomPhoneNumber())
-});
+test.describe("API-тесты на создание клиентов", async () => {
+    test.beforeAll(async ({request}) => {
+        clubId = await test.step("Получить id клуба", async () => {
+            const parameters = {...await getBaseParameters()};
+            const getClubsID = await new getClubs(request).getClubsID(Statuses.OK, parameters);
+            const getClubsData = await getClubsID.json();
+            return getClubsData?.data[0]?.id;
+        });
+    });
+    test("Создать клиента", async( {request}) => {
+        const response =await test.step("Создать клиента", async () => {
+            const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber());
+            return (await (await new createUsersRequests(request).postCreateUsers(Statuses.OK, requestBody)).json());
+        });
 
-test.describe("Тесты на создание клиент", async () => {
-        test(`[positive] Создать клиента с паролем и опытом`, async ({ request }) => {
-            await new createUsersRequests(request).postCreateUsers(200, requestData)
+        await test.step("Проверить схему ответа", async () => {
+            await expect(validateJson(baseResponseJsonSchema, response)).resolves.toBeTruthy();
+            await expect(validateJson(createUserDataResponseJsonSchema, response.data)).resolves.toBeTruthy();
+        });
     });
 });
-

@@ -7,6 +7,9 @@ import { Statuses } from "@libs/statuses";
 import { Providers } from "@libs/PaymentProviders";
 import PaymentCreate from "@requests/paymentCreate.request";
 import { getUserRequestJson } from "@entities/user.requestJson";
+import { validateJson } from "@utils/validator.util";
+import { baseResponseJsonSchema } from "@entities/base.response";
+import { createUserDataResponseJsonSchema } from "@entities/user.response";
 
 test.describe("API-тесты на создание подписки клиенту", async () => {
 
@@ -48,11 +51,20 @@ test.describe("API-тесты на создание подписки клиен�
     });
 
     test.beforeEach(async ({ request }) => {
-        userId = await test.step("Создать клиента и получить его id", async () => {
+        const createUserResponse = await test.step("Создать клиента и получить его id", async () => {
             const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber())
 
-            const { id } = (await (await new createUsersRequests(request).postCreateUsers(Statuses.OK, requestBody)).json()).data;
-            return id;
+            const response = await new createUsersRequests(request).postCreateUsers(Statuses.OK, requestBody);
+            const responseData = await response.json();
+            
+            userId = responseData.data.id;
+            
+            return responseData;
+        });
+
+        await test.step("Проверить схему ответа создания клиента", async () => {
+            await expect(validateJson(baseResponseJsonSchema, createUserResponse)).resolves.toBeTruthy();
+            await expect(validateJson(createUserDataResponseJsonSchema, createUserResponse.data)).resolves.toBeTruthy();
         });
 
         subscriptionResponse = await test.step("Создать подписку пользователю", async () => {

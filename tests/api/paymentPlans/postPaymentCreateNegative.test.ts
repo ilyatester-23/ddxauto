@@ -7,6 +7,9 @@ import { Statuses } from "@libs/statuses";
 import { Providers } from "@libs/PaymentProviders";
 import PaymentCreate from "@requests/paymentCreate.request";
 import { getPaymentPlanRequestJson } from "@entities/paymentPlan.requestJson";
+import { validateJson } from "@utils/validator.util";
+import { baseResponseJsonSchema } from "@entities/base.response";
+import { createUserDataResponseJsonSchema } from "@entities/user.response";
 
 test.describe("API-тесты на создание подписки клиенту", async () => {
 
@@ -48,7 +51,7 @@ test.describe("API-тесты на создание подписки клиен�
     });
 
     test.beforeEach(async ({ request }) => {
-        userId = await test.step("Создать клиента и получить его id", async () => {
+        const response = await test.step("Создать клиента и получить его id", async () => {
             const requestBody = {
                 session_id: "23",
                 request_id: "23",
@@ -72,16 +75,21 @@ test.describe("API-тесты на создание подписки клиен�
                 }
             };
 
-            const { id } = (await (await new createUsersRequests(request).postCreateUsers(Statuses.OK, requestBody)).json()).data;
-            return id;
+            const createUserResponse = await new createUsersRequests(request).postCreateUsers(Statuses.OK, requestBody);
+            const createUserData = await createUserResponse.json();
+            
+            await test.step("Проверить схему ответа создания клиента", async () => {
+                await expect(validateJson(baseResponseJsonSchema, createUserData)).resolves.toBeTruthy();
+                await expect(validateJson(createUserDataResponseJsonSchema, createUserData.data)).resolves.toBeTruthy();
+            });
+            
+            userId = createUserData.data.id;
+            return createUserResponse;
         });
 
         subscriptionResponse = await test.step("Создать подписку пользователю", async () => {
-
             const requestBody = await getPaymentPlanRequestJson(clubId)
-
             const response = await new createUsersRequests(request).postCreatePaymentPlan(Statuses.OK, userId, requestBody);
-
             expect(response.status()).toEqual(Statuses.OK);
             const responseData = await response.json();
 
@@ -97,7 +105,7 @@ test.describe("API-тесты на создание подписки клиен�
                 expect(response.status()).toEqual(Statuses.BAD_REQUEST)
             });
 
-            await test.step("Проверить сообщение  об ошибке", async () => {
+            await test.step("Проверить сообщение об ошибке", async () => {
                 expect((await response.json()).error.message).toEqual("not payment provider")
             });
         });
@@ -110,7 +118,7 @@ test.describe("API-тесты на создание подписки клиен�
                     expect(response.status()).toEqual(Statuses.BAD_REQUEST)
                 });
     
-                await test.step("Проверить сообщение  об ошибке", async () => {
+                await test.step("Проверить сообщение об ошибке", async () => {
                     expect((await response.json()).error.message).toEqual("not payment provider")
                 });
             });

@@ -5,12 +5,11 @@ import { getRandomEmail, getRandomPhoneNumber } from "@utils/random";
 import getClubs from "@requests/clubs.request";
 import api from '../../../api.json';
 import { Statuses } from "@libs/statuses";
-import userTestData from "@data/users.json";
-import requestTestData from "@data/request.json"
-import { RequestSource } from "@libs/requestSource";
-import { SportExperience } from "@libs/sportExperience";
 import { getUserRequestJson } from "@entities/user.requestJson";
 import { getPaymentPlanRequestJson } from "@entities/paymentPlan.requestJson";
+import { validateJson } from "@utils/validator.util";
+import { baseResponseJsonSchema } from "@entities/base.response";
+import { createUserDataResponseJsonSchema } from "@entities/user.response";
 
 test.describe("API-тесты на создание подписки клиенту", async () => {
     test("[positive] Получение клуба и создание клиента", async ({ request }) => {
@@ -21,18 +20,26 @@ test.describe("API-тесты на создание подписки клиен�
             return clubsData?.data[0]?.id;
         });
 
-        const { userId } = await test.step("Создать клиента и получить его id", async () => {
+        const { userId, userResponseData } = await test.step("Создать клиента и получить его id", async () => {
             const requestBody = await getUserRequestJson(clubId, getRandomEmail(), getRandomPhoneNumber())
 
-            const response = (await (await new createUsersRequests(request).postCreateUsers(200, requestBody)).json()).data;
+            const response = await new createUsersRequests(request).postCreateUsers(200, requestBody);
+            const responseData = await response.json();
+            
+            await test.step("Проверить схему ответа создания клиента", async () => {
+                await expect(validateJson(baseResponseJsonSchema, responseData)).resolves.toBeTruthy();
+                await expect(validateJson(createUserDataResponseJsonSchema, responseData.data)).resolves.toBeTruthy();
+            });
+            
             return {
-                userId: response.id,
+                userId: responseData.data.id,
+                userResponseData: responseData
             };
         });
 
         const subscriptionResponse = await test.step("Создать подписку пользователю", async () => {
             
-        const requestBody = await getPaymentPlanRequestJson(clubId)
+            const requestBody = await getPaymentPlanRequestJson(clubId)
 
             const url = `https://api.test.ddxfitness.ru/users/${userId}/user_payment_plans`;
             const response = await request.post(url, {

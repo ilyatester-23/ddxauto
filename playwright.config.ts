@@ -4,7 +4,7 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   use: {
-    headless: true,
+    headless: false,
     browserName: "chromium",
     screenshot: "only-on-failure",
     video: "retain-on-failure",

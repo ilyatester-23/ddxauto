@@ -29,7 +29,7 @@ test.describe("Тесты на авторизацию в CRM", async () => {
         });
 
         await test.step("Заполнить поле email и нажать Сбросить", async () => {
-            await page.getByPlaceholder('Email').fill(authCRMTestData.password);
+            await page.getByPlaceholder('Введите ваш e-mail').fill(authCRMTestData.password);
             await page.getByRole('button', { name: 'Сбросить пароль' }).click();
         });
 
