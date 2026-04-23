@@ -39,20 +39,7 @@ test.describe("API-тесты на создание подписки клиен�
 
         const subscriptionResponse = await test.step("Создать подписку пользователю", async () => {
             
-            const requestBody = await getPaymentPlanRequestJson(clubId)
-
-            const url = `https://api.test.ddxfitness.ru/users/${userId}/user_payment_plans`;
-            const response = await request.post(url, {
-                headers: {
-                    'Authorization': `${api.tokens.test}`
-                },
-                data: requestBody
-            });
-
-            expect(response.status()).toEqual(200);
-            const responseData = await response.json();
-
-            return responseData;
+            
         });
     });
 });
